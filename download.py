@@ -9,7 +9,7 @@ def download_video(video_url, title):
     try:
         if not os.path.exists('./video'):
             os.mkdir('./video')
-        response = requests.get(video_url)
+        response = requests.get(video_url, stream=True)
         with open(f'./video/{title}.mp4', 'wb') as fw:
             for chunk in response.iter_content(chunk_size=1024):
                 fw.write(chunk)
